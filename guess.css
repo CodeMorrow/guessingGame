@@ -1,3 +1,6 @@
+#startButton {
+    display: inline-block;
+}
 .guessButtons, #thatsItButton, .aiButton {
     display: none;
 }

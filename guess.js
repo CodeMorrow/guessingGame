@@ -24,15 +24,15 @@ $(document).ready(function () {
         higherWasClicked = false;
         smartGuess = false;
         guesses = [];
-        aiButtons.css("display", "inline-block");
-        startButton.css("display", "none");
+        aiButtons.show();
+        startButton.hide();
         displayMessage.empty().text("Which level of computer intelligence would you like to challenge?");
     });
 
     aiButtons.click(function () {
-        guessButtons.css("display", "inline-block");
-        thatsItButton.css("display", "inline-block");
-        aiButtons.css("display", "none");
+        guessButtons.show();
+        thatsItButton.show();
+        aiButtons.hide();
         lastGuess = getNumber(high, low);
         displayMessage.empty().text("I guess " + lastGuess);
         guesses.push(lastGuess);
@@ -85,9 +85,9 @@ $(document).ready(function () {
     };
 
     function playAgain() {
-        guessButtons.css("display", "none");
-        thatsItButton.css("display", "none");
+        guessButtons.hide();
+        thatsItButton.hide();
         startButton.text("Play Again!");
-        startButton.css("display", "inline-block");
+        startButton.show();
     }
 });
