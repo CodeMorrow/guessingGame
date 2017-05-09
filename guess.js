@@ -28,6 +28,10 @@ $(document).ready(function () {
         startButton.hide();
         displayMessage.empty().text("Which level of computer intelligence would you like to challenge?");
     });
+    
+    smartGuessButton.click(function () {
+        smartGuess = true;
+    });
 
     aiButtons.click(function () {
         guessButtons.show();
@@ -36,10 +40,6 @@ $(document).ready(function () {
         lastGuess = getNumber(high, low);
         displayMessage.empty().text("I guess " + lastGuess);
         guesses.push(lastGuess);
-    });
-
-    smartGuessButton.click(function () {
-        smartGuess = true;
     });
 
     thatsItButton.click(function () {
