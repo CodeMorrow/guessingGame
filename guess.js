@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function(){
+$(document).ready(function () {
     var lowMin = 1;
     var highMax = 1000;
     var low;//highest guess where the target number was HIGHER
@@ -22,8 +22,8 @@ $(document).ready(function(){
     var smartGuess = false;
     var guesses = [];
     var newGameMessage = " Play Again? Think of a number between " + lowMin + " and " + highMax + ".";
-    
-    startButton.click(function(){
+
+    startButton.click(function () {
         low = lowMin;
         high = highMax;
         lastGuess;
@@ -34,8 +34,8 @@ $(document).ready(function(){
         startButton.css("display", "none");
         displayMessage.empty().text("Which level of computer intelligence would you like to challenge?");
     });
-    
-    aiButtons.click(function(){
+
+    aiButtons.click(function () {
         guessButtons.css("display", "inline-block");
         thatsItButton.css("display", "inline-block");
         aiButtons.css("display", "none");
@@ -43,54 +43,54 @@ $(document).ready(function(){
         displayMessage.empty().text("I guess " + lastGuess);
         guesses.push(lastGuess);
     });
-    
-    smartGuessButton.click(function(){
+
+    smartGuessButton.click(function () {
         smartGuess = true;
     });
 
-    thatsItButton.click(function(){
+    thatsItButton.click(function () {
         playAgain();
-        if(guesses.length === 1){
+        if (guesses.length === 1) {
             displayMessage.empty().text("It took me " + guesses.length + " guess!" + newGameMessage);
         }
         displayMessage.empty().text("It took me " + guesses.length + " guesses!" + newGameMessage);
     });
-    
-    lowerButton.click(function(){
+
+    lowerButton.click(function () {
         higherWasClicked = false;
         high = lastGuess - 1;
         nextGuess();
     });
-    
-    higherButton.click(function(){
+
+    higherButton.click(function () {
         higherWasClicked = true;
         low = lastGuess + 1;
         nextGuess();
     });
-    
-    function nextGuess(){
-        if (high === low){
+
+    function nextGuess() {
+        if (high === low) {
             playAgain();
-            displayMessage.empty().text("The number must be "+ high + "!" + newGameMessage); 
+            displayMessage.empty().text("The number must be " + high + "!" + newGameMessage);
         } else {
             lastGuess = getNumber(high, low);
             displayMessage.empty().text("I guess " + lastGuess);
             guesses.push(lastGuess);
         }
     };
-    
-    function getNumber(high, low){
-        if (smartGuess && higherWasClicked){
-            return Math.round((low+high)/2);
-        } else if (smartGuess){
-            return Math.floor((low+high)/2);
-        } else if (higherWasClicked){
-            return Math.round(Math.random()*(high-low)+low);
+
+    function getNumber(high, low) {
+        if (smartGuess && higherWasClicked) {
+            return Math.round((low + high) / 2);
+        } else if (smartGuess) {
+            return Math.floor((low + high) / 2);
+        } else if (higherWasClicked) {
+            return Math.round(Math.random() * (high - low) + low);
         }
-        return Math.floor(Math.random()*(high-low)+low);
+        return Math.floor(Math.random() * (high - low) + low);
     };
-    
-    function playAgain(){
+
+    function playAgain() {
         guessButtons.css("display", "none");
         thatsItButton.css("display", "none");
         startButton.text("Play Again!");
